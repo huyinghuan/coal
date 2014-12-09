@@ -1,4 +1,38 @@
 {
   "name": "coal",
-  "version": "0.0.1"
+  "version": "0.0.1",
+  "description": "Mysql ORM base on knexjs",
+  "author": "huyinghuan",
+  "homepage": "https://github.com/huyinghuan/coal",
+  "keywords": [
+    "coal",
+    "orm",
+    "mysql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huyinghuan/coal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/huyinghuan/coal/issues",
+    "email": "ec.huyinghuan@gmail.com"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://gist.githubusercontent.com/huyinghuan/a03ffed8877dc6822275/raw/4a78514616df437e15daa5a010ade50f5e882e7c/LICENSE"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "knex": "^0.7.3",
+    "lodash": "^2.4.1",
+    "mysql": "^2.5.0",
+    "sload": "^0.1.3-rc4"
+  },
+  "scripts": {
+    "pretest": "coffee --no-header -o ./ -c src/"
+  }
 }

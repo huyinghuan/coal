@@ -1,6 +1,6 @@
 coal
 ----------------
-  Base on [knexjs](http://knexjs.org) ORM
+  ORM Base on [knexjs](http://knexjs.org)
 
 
 ## Install
@@ -28,13 +28,12 @@ module.exports =
   schema: 'schame'
 ```
 
-create tables
+init tables
 
 ```coffeescript
 Coal = require 'coal'
 config = require './config'
 coal = new Coal(config)
-_coal.prepareSchema()
 ```
 
 ## Sample

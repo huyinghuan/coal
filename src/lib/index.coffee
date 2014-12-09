@@ -1,10 +1,12 @@
 _path = require 'path'
 _knex = require 'knex'
 _Schema = require './schema'
+_Model = require './model'
 
 class Coal
   constructor: (@config)->
     @initConnection(@config.database)
+    @prepareSchema()
 
   initConnection: (config)->
     @dbConnection = _knex(config)
@@ -15,5 +17,9 @@ class Coal
 
   getConnection: ->
     @dbConnection
+
+  Model: (tabName)->
+    new _Model(tabName, @dbConnection)
+
 
 module.exports = Coal

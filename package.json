@@ -34,5 +34,8 @@
   },
   "scripts": {
     "pretest": "coffee --no-header -o ./ -c src/"
+  },
+  "devDependencies": {
+    "sqlite3": "^3.0.4"
   }
 }

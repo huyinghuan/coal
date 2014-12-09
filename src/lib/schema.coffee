@@ -52,9 +52,9 @@ class Schema
     _Log.info "Create #{name} begin !"
     @connection.schema.createTable(name, (table)->
       _Log.info "Create #{name} success !"
-      table.increments('id').primary()
+      table.increments()
       table[value] key for key, value of fields
-      table.bigInteger 'timestamp'
+      table.timestamps()
     )
 
 module.exports = Schema

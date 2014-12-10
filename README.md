@@ -33,10 +33,23 @@ init tables
 ```coffeescript
 Coal = require 'coal'
 config = require './config'
-coal = new Coal(config)
+coal = new Coal(config, true)
 ```
 
+> you need install database driver like: npm install mysql or npm install sqlite3
+
 ## API
+
+### Coal(config, isBuildTable)
+
+@config:  the database config.
+@isBuildTable: Is auto update table or create table. default is false.
+
+> if use in product environment, please init database schema structure at first.
+> and then set isBuildTable as false.
+
+> if you are developing, set it be true. let coal auto check the schema change, and
+> apply in database.
 
 ### coal.Model(tableName)
 

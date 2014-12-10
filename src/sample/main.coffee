@@ -2,10 +2,10 @@ _Coal = require '../lib/index'
 _config = require './config'
 
 connectMysql = ->
-  new _Coal(_config.mysql)
+  new _Coal(_config.mysql, true)
 
 connectSQLite = ->
-  new _Coal(_config.sqlite3)
+  new _Coal(_config.sqlite3, true)
 
 coal = connectSQLite()
 
@@ -19,7 +19,7 @@ People = coal.Model('people')
 # People.sql("select * from people").then((r)-> console.log r)
 
 #pass
-#People.find(['id', 'name']).then((result)-> console.log result)
+People.find(['id', 'name']).then((result)-> console.log result)
 
 #pass
 #People.find(['id', 'name'], ['id', '=', 1]).then((result)-> console.log result)

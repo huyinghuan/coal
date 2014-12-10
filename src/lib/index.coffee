@@ -12,7 +12,7 @@ class Coal
     @dbConnection = _knex(config)
 
   prepareSchema: ()->
-    schemaDir = _path.join process.cwd(), @config.schema
+    schemaDir = @config.schema
     new _Schema(@dbConnection, schemaDir)
 
   getConnection: ->

@@ -6,12 +6,11 @@ _Model = require './model'
 class Coal
   constructor: (@config)->
     @initConnection(@config.database)
-    @prepareSchema()
 
   initConnection: (config)->
     @dbConnection = _knex(config)
 
-  prepareSchema: ->
+  prepareSchema: ()->
     schemaDir = _path.join process.cwd(), @config.schema
     new _Schema(@dbConnection, schemaDir)
 

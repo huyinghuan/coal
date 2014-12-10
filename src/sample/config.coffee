@@ -12,5 +12,4 @@ exports.sqlite3 =
   database:
     client: 'sqlite3',
     connection: filename: "./my.sqlite"
-
   schema: 'schame'

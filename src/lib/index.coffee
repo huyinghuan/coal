@@ -4,8 +4,9 @@ _Schema = require './schema'
 _Model = require './model'
 
 class Coal
-  constructor: (@config)->
+  constructor: (@config, updateSchema = false)->
     @initConnection(@config.database)
+    @prepareSchema() if updateSchema
 
   initConnection: (config)->
     @dbConnection = _knex(config)

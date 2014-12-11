@@ -6,11 +6,11 @@
   _config = require('./config');
 
   connectMysql = function() {
-    return new _Coal(_config.mysql);
+    return new _Coal(_config.mysql, true);
   };
 
   connectSQLite = function() {
-    return new _Coal(_config.sqlite3);
+    return new _Coal(_config.sqlite3, true);
   };
 
   coal = connectSQLite();
@@ -21,6 +21,10 @@
   /*
     Select Test
    */
+
+  People.find().then(function(r) {
+    return console.log(r);
+  });
 
 
   /*
@@ -53,8 +57,8 @@
     Delete Test
    */
 
-  delOneTest = function() {
-    return People.delOne("id", 1).then(function() {
+  delOneTest = function(id) {
+    return People.delOne("id", id).then(function() {
       return console.log("delOne success");
     });
   };

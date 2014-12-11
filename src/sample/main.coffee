@@ -19,13 +19,13 @@ People = coal.Model('people')
 # People.sql("select * from people").then((r)-> console.log r)
 
 #pass
-People.find(['id', 'name']).then((result)-> console.log result)
+#People.find(['id', 'name']).then((result)-> console.log result)
 
 #pass
 #People.find(['id', 'name'], ['id', '=', 1]).then((result)-> console.log result)
 
 #pass
-#People.findOne().then((r)-> console.log r)
+People.find().then((r)-> console.log r)
 
 ###
   Insert Test
@@ -53,10 +53,10 @@ updateTest = ->
 ###
 
 #pass
-delOneTest = ->
-  People.delOne("id", 1).then(()-> console.log "delOne success")
+delOneTest = (id)->
+  People.delOne("id", id).then(()-> console.log "delOne success")
 
-#DelOneTest()
+#delOneTest(4)
 
 #pass
 delMulTest = ->

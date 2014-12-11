@@ -51,6 +51,13 @@ coal = new Coal(config, true)
 > if you are developing, set it be true. let coal auto check the schema change, and
 > apply in database.
 
+### coal.prepareSchema()
+
+build table use schemas and check the schema change then apply in database.
+
+if in product, just run once. use combine with ```Coal(config, isBuildTable)```
+
+
 ### coal.Model(tableName)
 
 return an instance of Model.

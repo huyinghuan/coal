@@ -1,24 +1,31 @@
 class Model
-  constructor: (@tableName, @connection)->
+  constructor: (@tableName, @connection, @developer)->
 
   save: (data)->
     tab = @table()
     data.created_at = new Date() if not data.created_at
-    tab.insert(data)
+    sql = tab.insert(data)
+    console.log sql.toString() if @developer
+    sql
 
   update: (data, where)->
     tab = @table()
     data.updated_at = new Date() if not data.updated_at
     r = tab.update(data)
-    return r if not where
-    r.where.apply(tab, where)
+    if where
+      r.where.apply(tab, where)
+    console.log r.toString() if @developer
+    r
+
 
   find: (fileds, where)->
     tab = @table()
     return tab.select() if not fileds
     sql =  tab.select.apply tab, fileds
-    return sql if not where
-    return sql.where.apply tab, where
+    if where
+     sql = sql.where.apply tab, where
+    console.log sql.toString() if @developer
+    sql
 
   findOne: (fileds, where)->
     @find(fileds, where).limit(1).then((r)-> r[0])
@@ -29,12 +36,16 @@ class Model
 
   delOne: (key, value)->
     tab = @table()
-    tab.where(key, value).del()
+    sql = tab.where(key, value).del()
+    console.log sql.toString() if @developer
+    sql
 
   delMul: (key, valueArr)->
     tab = @table()
     valueArr = [].concat(valueArr)
-    tab.whereIn(key, valueArr).del()
+    sql = tab.whereIn(key, valueArr).del()
+    console.log sql.toString() if @developer
+    sql
 
   table: -> @connection(@tableName)
 

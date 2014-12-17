@@ -15,7 +15,7 @@
 
   coal = connectSQLite();
 
-  People = coal.Model('people');
+  People = coal.Model('people', true);
 
 
   /*
@@ -38,6 +38,8 @@
       return console.log("save success");
     });
   };
+
+  saveTest();
 
 
   /*

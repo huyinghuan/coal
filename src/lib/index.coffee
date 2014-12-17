@@ -18,8 +18,8 @@ class Coal
   getConnection: ->
     @dbConnection
 
-  Model: (tabName)->
-    new _Model(tabName, @dbConnection)
+  Model: (tabName, developer = false)->
+    new _Model(tabName, @dbConnection, developer)
 
 
 module.exports = Coal

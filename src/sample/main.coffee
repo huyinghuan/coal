@@ -9,7 +9,7 @@ connectSQLite = ->
 
 coal = connectSQLite()
 
-People = coal.Model('people')
+People = coal.Model('people', true)
 
 ###
   Select Test
@@ -35,7 +35,7 @@ People.find().then((r)-> console.log r)
 saveTest = ->
   People.save(name: "Test Save").exec(()-> console.log "save success")
 
-#saveTest()
+saveTest()
 
 ###
   Update Test

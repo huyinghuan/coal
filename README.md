@@ -96,7 +96,7 @@ param ```sql``` is a sql string. like ```select * from people```
 
 return promises
 
-### Model.tab()
+### Model.table()
 
 return a knex instance.
 

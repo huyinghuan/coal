@@ -17,10 +17,7 @@
     "url": "https://github.com/huyinghuan/coal/issues",
     "email": "ec.huyinghuan@gmail.com"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://gist.githubusercontent.com/huyinghuan/a03ffed8877dc6822275/raw/4a78514616df437e15daa5a010ade50f5e882e7c/LICENSE"
-  },
+  "license": "MIT",
   "engines": {
     "node": ">= 0.10.0"
   },

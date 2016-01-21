@@ -25,7 +25,7 @@ People = coal.Model('people', true)
 #People.find(['id', 'name'], ['id', '=', 1]).then((result)-> console.log result)
 
 #pass
-People.find().then((r)-> console.log r)
+#People.find().then((r)-> console.log r)
 
 ###
   Insert Test

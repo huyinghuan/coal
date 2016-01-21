@@ -21,5 +21,4 @@ class Coal
   Model: (tabName, developer = false)->
     new _Model(tabName, @dbConnection, developer)
 
-
 module.exports = Coal

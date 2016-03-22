@@ -66,30 +66,6 @@ return an instance of Model.
 
 return promises
 
-### Model.update(obj[, where])
-
-```where``` argument is optional. it must be array, like ["id", "=", 1]
-
-return promises
-
-### Model.find(fields[, where])
-
-param ```fields``` must be array. 
-
-return promises
-
-### Model.findOne(fields[, where])
-
-the same with up.
-
-### Model.delOne(key, value)
-
-return promises
-
-### Model.delMul(key, valueArray)
-
-return promises
-
 ### Model.sql(sql)
 
 param ```sql``` is a sql string. like ```select * from people```
@@ -109,6 +85,14 @@ see the directory ```sample```
 MIT
 
 ## History
+v0.2.0
+
+1. delete update, delOne, delMul. just reserve ```sql```, ```save```, ```update``` and ```table```
+
+2. remove auto add ```create_at``` and ```update_at``` field for every table. change to config in schema
+
+3. update depend package
+
 
 v0.0.2
 

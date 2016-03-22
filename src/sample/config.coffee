@@ -6,10 +6,10 @@ exports.mysql =
       user: 'root'
       password: '123456'
       database: 'test_coal'
-  schema: 'schame'
+  schema: 'schema'
 
 exports.sqlite3 =
   database:
     client: 'sqlite3',
     connection: filename: "./my.sqlite"
-  schema: 'schame'
+  schema: 'schema'

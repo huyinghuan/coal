@@ -1,6 +1,6 @@
 {
   "name": "coal",
-  "version": "0.0.10",
+  "version": "0.2.0",
   "description": "Mysql ORM base on knexjs",
   "author": "huyinghuan",
   "homepage": "https://github.com/huyinghuan/coal",
@@ -23,12 +23,12 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "async": "^0.9.0",
-    "knex": "^0.7.3",
+    "async": "^2.0.0-rc.1",
+    "knex": "^0.10.0",
     "sload": "^0.1.3-rc4"
   },
   "scripts": {
-    "pretest": "coffee --no-header -o ./ -c src/"
+    "prepublish": "coffee --no-header -o ./ -c src/"
   },
   "devDependencies": {
     "sqlite3": "^3.0.4",

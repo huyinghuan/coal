@@ -18,6 +18,8 @@ class Schema
     name = schema.name
     fields = schema.fields
     self = @
+    fields["create_at"] = "bigInteger" if schema.auto_create_at
+    fields["update_at"] = "bigInteger" if schema.auto_update_at
     @connection.schema.hasTable(name).then (exists)->
       if exists
         self.updateSchema name, fields
@@ -52,9 +54,8 @@ class Schema
     _Log.info "Create #{name} begin !"
     @connection.schema.createTable(name, (table)->
       _Log.info "Create #{name} success !"
-      table.increments()
+      table.bigIncrements().primary()
       table[value] key for key, value of fields
-      table.timestamps()
     )
 
 module.exports = Schema

@@ -7,7 +7,7 @@ connectMysql = ->
 connectSQLite = ->
   new _Coal(_config.sqlite3, true)
 
-coal = connectSQLite()
+coal = connectMysql()
 
 People = coal.Model('people', true)
 
@@ -33,7 +33,7 @@ People = coal.Model('people', true)
 
 #pass
 saveTest = ->
-  People.save(name: "Test Save").exec(()-> console.log "save success")
+  People.save(name: "Test Save").then(-> console.log "save success")
 
 saveTest()
 

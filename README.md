@@ -85,6 +85,12 @@ see the directory ```sample```
 MIT
 
 ## History
+v0.2.1
+
+1. add clear Data
+
+```coal.clearFields(tableName, beClearData)```
+
 v0.2.0
 
 1. delete update, delOne, delMul. just reserve ```sql```, ```save```, ```update``` and ```table```

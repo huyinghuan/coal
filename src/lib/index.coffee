@@ -16,7 +16,7 @@ class Coal
 
   prepareSchema: ()->
     schemaDir = @config.schema
-    new _Schema(@dbConnection, schemaDir)
+    @tableSchema = new _Schema(@dbConnection, schemaDir)
 
   prepareTableStruct: ->
     schemaDir = @config.schema
@@ -29,5 +29,10 @@ class Coal
 
   Model: (tabName, developer = false)->
     new _Model(tabName, @dbConnection, developer)
+
+  #清洗数据
+  clearFields: (tabName, beClearData)->
+    @tableSchema.clearSchema(tabName, beClearData)
+
 
 module.exports = Coal

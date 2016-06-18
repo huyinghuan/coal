@@ -5,14 +5,14 @@ _Log = info: (msg)-> console.log msg
 
 class Schema
   constructor: (@connection, @schemaDir)->
+    @allFields = {}
     @init()
 
   init: ->
     schemas = @scanSchema()
     @buildSchema schema for schema in schemas
 
-  scanSchema: ->
-    _sload.scan @schemaDir
+  scanSchema: -> _sload.scan @schemaDir
 
   buildSchema: (schema)->
     name = schema.name
@@ -20,6 +20,9 @@ class Schema
     self = @
     fields["create_at"] = "bigInteger" if schema.auto_create_at
     fields["update_at"] = "bigInteger" if schema.auto_update_at
+    #存储所有fields
+    @allFields[name] = fields
+
     @connection.schema.hasTable(name).then (exists)->
       if exists
         self.updateSchema name, fields
@@ -57,5 +60,13 @@ class Schema
       table.bigIncrements().primary()
       table[value] key for key, value of fields
     )
+
+  #清洗数据
+  clearSchema: (tableName, data)->
+    fields = @allFields[tableName] or {}
+    result = {}
+    for key, value of fields
+      result[key] = data[key] if data[key]
+    result
 
 module.exports = Schema

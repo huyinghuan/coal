@@ -85,6 +85,10 @@ see the directory ```sample```
 MIT
 
 ## History
+v0.2.2
+
+  fix bug. It will be ```coal.clearFields``` remove when field's value is false or 0
+
 v0.2.1
 
 1. add clear Data

@@ -66,7 +66,7 @@ class Schema
     fields = @allFields[tableName] or {}
     result = {}
     for key, value of fields
-      result[key] = data[key] if data[key]
+      result[key] = data[key] if data[key]?
     result
 
 module.exports = Schema

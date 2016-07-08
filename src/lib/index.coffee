@@ -8,7 +8,7 @@ _table_struct = require './table-struct'
 class Coal
   constructor: (@config, updateSchema = false)->
     @initConnection(@config.database)
-    @prepareSchema() if updateSchema
+    @prepareSchema() #if updateSchema
     @prepareTableStruct()
 
   initConnection: (config)->

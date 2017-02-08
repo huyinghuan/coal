@@ -7,23 +7,30 @@ class Model
   save: (data)->
     tab = @table()
     data.create_at = Date.now() if @schema.auto_create_at and not data.create_at
-    sql = tab.insert(@schema.clearSchema(@tableName, data))
+    sql = tab.insert(@clearSchema(data))
     console.log sql.toString() if @developer
     sql
+
+  clearSchema: (data)->
+    fields = @schema.fields or {}
+    result = {}
+    for key, value of fields
+      result[key] = data[key] if data[key]?
+    result
 
   saveArray: (data)->
     queue = []
     for item in data
       item.create_at = Date.now() if @schema.auto_create_at and not item.create_at
-      queue.push(@schema.clearSchema(@tableName, item))
-    sql = tab.insert(queue)
+      queue.push(@clearSchema(item))
+    sql = @table().insert(queue)
     console.log sql.toString() if @developer
     sql
 
   update: (key, data)->
     tab = @table()
     data.update_at = Date.now() if @schema.auto_update_at and not data.update_at
-    sql = tab.update(@schema.clearSchema(@tableName, data)).where(key, data[key])
+    sql = tab.update(@clearSchema(data)).where(key, data[key])
     console.log sql.toString() if @developer
     sql
 

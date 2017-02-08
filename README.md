@@ -66,6 +66,16 @@ return an instance of Model.
 
 return promises
 
+### Model.saveArray(array)
+
+return promises
+
+### Model.update(key, data)
+
+`data` must include `key`, example, if `key` is `id`, then `data[id]` cant be `null or undefine`
+
+return promises
+
 ### Model.sql(sql)
 
 param ```sql``` is a sql string. like ```select * from people```
@@ -85,6 +95,11 @@ see the directory ```sample```
 MIT
 
 ## History
+
+v0.2.4
+  add function `saveArray`
+  clear data when call `save`, `saveArray`, `update`
+
 v0.2.2
 
   fix bug. It will be ```coal.clearFields``` remove when field's value is false or 0

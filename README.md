@@ -1,6 +1,6 @@
 coal
 ----------------
-  ORM Base on [knexjs](http://knexjs.org)
+  Base on [knexjs](http://knexjs.org)
 
 
 ## Install
@@ -14,115 +14,42 @@ npm install coal --save
 
 ### database configure
 
-configure.coffee
+config.js
 
-```coffeescript
-module.exports =
-  database:
-    client: 'mysql'
-    connection:
-      host: 'localhost'
-      user: 'root'
-      password: '123456'
-      database: 'test_coal'
-  schema: 'schame'
+```javascript
+exports.database = {
+  client: "mysql",
+  connection:{
+    host : 'localhost',
+    user : 'root',
+    password : '12345678',
+    database : 'page-monitor'
+  },
+  debug: false
+}
+```
+
+schema:
+
+```javascript
+exports.schema = {
+  id: "increments primary",
+  name: "string",
+  url:"string",
+}
 ```
 
 init tables
 
-```coffeescript
-Coal = require 'coal'
-config = require './config'
-coal = new Coal(config, true)
+```javascript
+Coal = require('coal')
+config = require('./config')
+await Coal.init(_config.database)
+await Coal.createTable([schema])
 ```
 
-> you need install database driver like: npm install mysql or npm install sqlite3
+## Get  knexjs instance
 
-## API
-
-### Coal(config, isBuildTable)
-
-@config:  the database config.
-@isBuildTable: Is auto update table or create table. default is false.
-
-> if use in product environment, please init database schema structure at first.
-> and then set isBuildTable as false.
-
-> if you are developing, set it be true. let coal auto check the schema change, and
-> apply in database.
-
-### coal.prepareSchema()
-
-build table use schemas and check the schema change then apply in database.
-
-if in product, just run once. use combine with ```Coal(config, isBuildTable)```
-
-
-### coal.Model(tableName)
-
-return an instance of Model.
-
-### Model.save(obj)
-
-return promises
-
-### Model.saveArray(array)
-
-return promises
-
-### Model.update(key, data)
-
-`data` must include `key`, example, if `key` is `id`, then `data[id]` cant be `null or undefine`
-
-return promises
-
-### Model.sql(sql)
-
-param ```sql``` is a sql string. like ```select * from people```
-
-return promises
-
-### Model.table()
-
-return a knex instance.
-
-## Sample
-
-see the directory ```sample```
-
-## LICENSE
-
-MIT
-
-## History
-
-v0.2.4
-  add function `saveArray`
-  clear data when call `save`, `saveArray`, `update`
-
-v0.2.2
-
-  fix bug. It will be ```coal.clearFields``` remove when field's value is false or 0
-
-v0.2.1
-
-1. add clear Data
-
-```coal.clearFields(tableName, beClearData)```
-
-v0.2.0
-
-1. delete update, delOne, delMul. just reserve ```sql```, ```save```, ```update``` and ```table```
-
-2. remove auto add ```create_at``` and ```update_at``` field for every table. change to config in schema
-
-3. update depend package
-
-
-v0.0.2
-
-  support simple operate function. like: save, update, delOne, delMul, sql and so on
-
-v0.0.1
-
-  init coal
+```
+Coal.get()
+```

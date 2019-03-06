@@ -1,6 +1,6 @@
 {
   "name": "coal",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Mysql ORM base on knexjs",
   "author": "huyinghuan",
   "homepage": "https://github.com/huyinghuan/coal",

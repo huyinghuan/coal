@@ -61,8 +61,9 @@ class Database{
         let columnProps = fields[key].split(' ')
         let chain = null
         columnProps.forEach((prop, index)=>{
+          let propMap = getPropMap(prop)
           if(index == 0){
-            chain = table[prop](key)
+            chain = table[propMap.name](key, propMap.value)
           }else{
             chain[prop]()
           }
@@ -71,9 +72,7 @@ class Database{
     }
   }
   async initTable(schema){
-    let knex = this.knex
     let tableName = schema.name
-    let fields = schema.fields
     let hasTable = await this.knex.schema.hasTable(tableName)
     if(!hasTable){
       await this.createTable(schema)
@@ -87,7 +86,7 @@ var conn = null
 
 exports.init = async function(config){
   conn = new Database(config)
-  conn.checkHeartBeat()
+  await conn.checkHeartBeat()
 }
 exports.createTable = async function(tableList){
   tableList.forEach(async (table)=>{

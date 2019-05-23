@@ -88,10 +88,10 @@ exports.init = async function(config){
   conn = new Database(config)
   await conn.checkHeartBeat()
 }
-exports.createTable = async function(tableList){
-  tableList.forEach(async (table)=>{
-    await conn.initTable(table)
-  })
+exports.createTable = function(tableList){
+  return Promise.all(tableList.map(async (table)=>{
+    return conn.initTable(table)
+  }))
 }
 exports.get = function(){
   return conn.Get()
